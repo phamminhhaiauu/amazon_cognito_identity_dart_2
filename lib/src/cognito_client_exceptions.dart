@@ -25,6 +25,24 @@ class CognitoClientException implements Exception {
 
   @override
   String toString() {
-    return 'CognitoClientException{statusCode: $statusCode, code: $code, name: $name, message: $message, stackTrace: $stackTrace, headers: $headers, method: $method, endpoint: $endpoint, body: $body, isConnected: $isConnected}';
+    final buffer = StringBuffer('CognitoClientException{');
+    if (statusCode != null) buffer.write('statusCode: $statusCode, ');
+    if (code != null && code!.isNotEmpty) buffer.write('code: $code, ');
+    if (name != null && name!.isNotEmpty) buffer.write('name: $name, ');
+    if (message != null && message!.isNotEmpty) {
+      buffer.write('message: $message, ');
+    }
+    if (stackTrace != null) buffer.write('stackTrace: $stackTrace, ');
+    if (headers != null && headers!.isNotEmpty) {
+      buffer.write('headers: $headers, ');
+    }
+    if (method != null && method!.isNotEmpty) buffer.write('method: $method, ');
+    if (endpoint != null && endpoint!.isNotEmpty) {
+      buffer.write('endpoint: $endpoint, ');
+    }
+    if (body != null && body!.isNotEmpty) buffer.write('body: $body, ');
+    if (isConnected != null) buffer.write('isConnected: $isConnected');
+    buffer.write('}');
+    return buffer.toString();
   }
 }
